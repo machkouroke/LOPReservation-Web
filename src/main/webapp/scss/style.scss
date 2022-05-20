@@ -1,0 +1,17 @@
+@import "variables-custom";
+@import "../node_modules/bootstrap/scss/bootstrap";
+@keyframes hover{
+  from {
+    background: white;
+  }
+  to {
+    background: $primary;
+  }
+}
+.menu:hover {
+  color: white;
+  animation: hover 1s forwards;
+}
+.row-menu {
+  height: 200px;
+}
