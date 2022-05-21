@@ -1,41 +1,48 @@
 package com.lop.gestion.dao;
 
+import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
 /**
  * This class create the connection with the database
  */
-public class Factory {
-    private final String url;
-    private final String name;
-    private final String password;
-    private static Factory instance;
+public class  Factory{
 
-    /**
-     * @param url Link to database
-     * @param name name of database's user
-     * @param password password
-     */
+    private  String url;
+    private  String name;
+    private  String password;
+
     public Factory(String url, String name, String password) {
-
-        this.url = url;
-        this.name = name;
-        this.password = password;
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-        } catch (ClassNotFoundException e) {
-            System.out.println("Erreur:" + e.getMessage());
+            ProcessBuilder pip = new ProcessBuilder("pip", "install", "-r",
+                    "src/main/java/com/lop/model/dao/initPython/requirements.txt");
+            errorProcess(pip);
+            ProcessBuilder pb = new ProcessBuilder("python",
+                    "src/main/java/com/lop/model/dao/initPython/main.py", "localhost", "root", "claudine");
+            errorProcess(pb);
+            this.url = url;
+            this.name = name;
+            this.password = password;
+        } catch (Exception e) {
+            System.out.println("Exception Raised: " + e);
         }
     }
 
-    public static Factory getInstance() {
-        if (instance == null) {
-            instance = new Factory("jdbc:oracle:thin:@localhost:1521:xe", "system",
-                    "claudine");
+
+    private static void errorProcess(ProcessBuilder pip) throws IOException {
+        Process pipProcess = pip.start();
+        if (pipProcess.errorReader() != null) {
+            while(true) {
+                String line = pipProcess.errorReader().readLine();
+                if (line == null) {
+                    break;
+                }
+                System.out.println(line);
+            }
         }
-        return instance;
     }
 
     public Connection getConnection() throws SQLException {
