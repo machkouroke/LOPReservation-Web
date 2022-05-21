@@ -40,7 +40,7 @@ public class UserConnection {
                 throw new UnknownUserNameException("Utilisateurs non enrégistré");
             }
         } catch (SQLException e) {
-            throw new DataBaseException("Une erreur est subvenu lors de la connection à la base " +
+            throw new DataBaseException("Une grosse erreur est subvenu lors de la connection à la base " +
                     "de données:" + e.getMessage());
         }
     }

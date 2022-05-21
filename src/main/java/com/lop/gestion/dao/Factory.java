@@ -34,18 +34,25 @@ public class  Factory{
 
     private static void errorProcess(ProcessBuilder pip) throws IOException {
         Process pipProcess = pip.start();
-        if (pipProcess.errorReader() != null) {
-            while(true) {
-                String line = pipProcess.errorReader().readLine();
-                if (line == null) {
-                    break;
-                }
-                System.out.println(line);
-            }
-        }
+//        if (pipProcess.errorReader() != null) {
+//            while(true) {
+//                String line = pipProcess.errorReader().readLine();
+//                if (line == null) {
+//                    break;
+//                }
+//                System.out.println(line);
+//            }
+//        }
     }
 
     public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(url, name, password);
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            return DriverManager.getConnection(url, name, password);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 }
