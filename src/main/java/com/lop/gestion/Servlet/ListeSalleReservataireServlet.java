@@ -12,13 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet(name = "ListeSalleReservataireServlet", value = "/ListeSalleReservataireServlet")
-public class    ListeSalleReservataireServlet extends HttpServlet {
-    private Factory factory;
-
-    @Override
-    public void init() {
-        this.factory = Factory.getInstance();
-    }
+public class ListeSalleReservataireServlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

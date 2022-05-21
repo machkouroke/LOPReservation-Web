@@ -15,8 +15,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
-public class MainServlet extends HttpServlet {
-    private Factory factory;
+public class MainServlet extends BaseServlet {
     final List<List<List<String>>> gridContent = new ArrayList<>(List.of(
             List.of(
                     List.of("add", "Ajouter une reservation", "icons/add.svg"),
@@ -42,11 +41,6 @@ public class MainServlet extends HttpServlet {
 
 
     ));
-
-    @Override
-    public void init() {
-        this.factory = Factory.getInstance();
-    }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)

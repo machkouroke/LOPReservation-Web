@@ -11,13 +11,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet(name = "ActifReservateurServlet", value = "/ActifReservateurServlet")
-public class ActifReservateurServlet extends HttpServlet {
-    private Factory factory;
+public class ActifReservateurServlet extends BaseServlet {
 
-    @Override
-    public void init() {
-        this.factory = Factory.getInstance();
-    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -12,13 +12,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet(name = "DeleteServlet", value = "/DeleteServlet")
-public class DeleteServlet extends HttpServlet {
-    private Factory factory;
+public class DeleteServlet extends BaseServlet {
 
-    @Override
-    public void init() {
-        this.factory = Factory.getInstance();
-    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

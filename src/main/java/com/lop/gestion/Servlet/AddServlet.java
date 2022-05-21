@@ -13,12 +13,8 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 @WebServlet(name = "AddServlet", value = "/AddServlet")
-public class AddServlet extends HttpServlet {
-    private Factory factory;
-    @Override
-    public void init() {
-        this.factory = Factory.getInstance();
-    }
+public class AddServlet extends BaseServlet {
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

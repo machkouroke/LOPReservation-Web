@@ -1,8 +1,8 @@
 package com.lop.gestion.Servlet;
 
-import com.lop.gestion.Exception.DataBaseException;
+
 import com.lop.gestion.dao.EventManager;
-import com.lop.gestion.dao.Factory;
+
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -11,13 +11,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet(name = "dayReservationServlet", value = "/dayReservationServlet")
-public class dayReservationServlet extends HttpServlet {
-    private Factory factory;
+public class dayReservationServlet extends BaseServlet{
 
-    @Override
-    public void init() {
-        this.factory = Factory.getInstance();
-    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

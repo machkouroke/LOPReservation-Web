@@ -1,19 +1,19 @@
 package com.lop.gestion.Servlet;
 
-import javax.servlet.*;
+import com.lop.gestion.dao.Factory;
+
+
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-import java.io.IOException;
+
 
 @WebServlet(name = "BaseServlet", value = "/BaseServlet")
-public class BaseServlet extends HttpServlet {
+public abstract class BaseServlet extends HttpServlet {
+    protected Factory factory;
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    public void init() {
+        this.factory = new Factory("jdbc:mysql://localhost:3306/manager", "root",
+                "claudine");
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }
