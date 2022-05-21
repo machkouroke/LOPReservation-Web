@@ -1,5 +1,8 @@
 package com.lop.gestion.dao;
 
+
+
+
 import com.lop.gestion.Beans.Users;
 import com.lop.gestion.Exception.DataBaseException;
 import com.lop.gestion.Exception.PasswordIncorrectException;
@@ -22,7 +25,7 @@ public class UserConnection {
     public boolean connexionValidate(String username, String password)
             throws PasswordIncorrectException, UnknownUserNameException, DataBaseException {
         try (PreparedStatement requete = this.factory.getConnection()
-                .prepareStatement("select * from \"User\" where username = ?")) {
+                .prepareStatement("select * from manager.user where username = ?")) {
             requete.setString(1, username);
             ResultSet resultat = requete.executeQuery();
             if (resultat.next()) {
@@ -37,7 +40,7 @@ public class UserConnection {
                 throw new UnknownUserNameException("Utilisateurs non enrégistré");
             }
         } catch (SQLException e) {
-            throw new DataBaseException("Une erreur est subvenu lors de la connection à la base " +
+            throw new DataBaseException("Une grosse erreur est subvenu lors de la connection à la base " +
                     "de données:" + e.getMessage());
         }
     }

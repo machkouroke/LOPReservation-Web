@@ -14,12 +14,8 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 @WebServlet(name = "UpdateServlet", value = "/UpdateServlet")
-public class UpdateServlet extends HttpServlet {
-    private Factory factory;
-    @Override
-    public void init() {
-        this.factory = Factory.getInstance();
-    }
+public class UpdateServlet extends BaseServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

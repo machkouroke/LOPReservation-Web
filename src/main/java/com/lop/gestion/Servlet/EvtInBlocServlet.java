@@ -11,13 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet(name = "EvtInBlocServlet", value = "/EvtInBlocServlet")
-public class EvtInBlocServlet extends HttpServlet {
-    private Factory factory;
-
-    @Override
-    public void init() {
-        this.factory = Factory.getInstance();
-    }
+public class EvtInBlocServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
